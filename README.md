@@ -8,4 +8,5 @@ Besides ignoring all your hard work in setting up the pipeline, this can be trou
 
 This tool is intended to fix this. It works by regularly running terraform plan in a codebuild container and reporting the terraform plan status to a custom cloudwatch metric. A cloudwatch alarm listens to this metric, going to ALARM state if it's nonzero for 2 periods (out of 3).
 
+![Diagram](sketch.jpg)
 TODO: proper documentation
