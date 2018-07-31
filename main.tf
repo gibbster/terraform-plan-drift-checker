@@ -185,8 +185,8 @@ resource "aws_lambda_function" "exec_lambda" {
 }
 
 resource "aws_cloudwatch_event_rule" "cron_rule" {
-    name = "every-X-minutes"
-    description = "Fires every X minutes"
+    name = "${var.deploy_name}-every-${var.check_frequency}-minutes"
+    description = "Fires every ${var.check_frequency} minutes"
     schedule_expression = "rate(${var.check_frequency} minutes)"
 }
 
