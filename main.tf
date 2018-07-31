@@ -126,7 +126,12 @@ resource "aws_cloudwatch_metric_alarm" "plan_failure_alarm" {
   statistic           = "Maximum"
   threshold           = "1"
   datapoints_to_alarm = "2"
+  alarm_actions       = ["${aws_sns_topic.plan_update_topic.arn}"]
   treat_missing_data  = "breaching"
+}
+
+resource "aws_sns_topic" "plan_update_topic" {
+  name = "${var.deploy_name}-tf-plan-update-topic"
 }
 
 resource "aws_iam_role" "iam_lambda_role" {
